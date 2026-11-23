@@ -2,171 +2,154 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vinos El Aladino</title>
-  <meta name="description" content="Vinos El Aladino · Un deseo en cada copa." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Aladino · Catálogo de vinos y piscos</title>
+  <meta name="description" content="Aladino · Un deseo en cada copa. Catálogo de vinos, piscos y cremas. Haz tu pedido por WhatsApp." />
+  <meta name="theme-color" content="#0b0b0d" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" id="favicon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 40'><path d='M6 22c8 0 12 8 26 8s18-6 22-12c2-3 6-4 8-3-3 0-5 2-7 6-4 8-11 13-23 13S10 30 6 22z' fill='%23d4af6a'/><path d='M26 16c0-5 3-8 6-8s6 3 6 8z' fill='%23d4af6a'/></svg>" />
+  <link rel="icon" type="image/webp" href="img/lampara.webp" />
 </head>
 <body>
 
-  <!-- Símbolos reutilizables -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="lampara" viewBox="0 0 64 40">
-      <path d="M32 2l1.2 3.2L36 6l-2.8 1L32 10l-1.2-3L28 6l2.8-.8z" />
-      <path d="M25 18c0-5 3-7.5 7-7.5s7 2.5 7 7.5z" />
-      <path d="M4 20c6-1 10 3 14 5h22c4-2 8-7 13-9 3-1 6-.5 8 1-3-.5-5 .5-7 2.5-4 4-7 9-14 10.5v3h5v2.5H19V33h5v-3C16 29 10 24 4 20z" />
-    </symbol>
-    <symbol id="uvas" viewBox="0 0 140 190" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M70 52C70 40 74 30 84 22" />
-      <path d="M84 22c8-6 18-4 20 4s-6 12-10 8 0-8 4-6" />
-      <path d="M70 46L48 40l5-9-12-7 12-4-2-12 11 6 7-12 4 13 9-7-2 13 12 2-11 7 4 9z" />
-      <path d="M70 46L46 26M70 46l-12-30M70 46l6-28M70 46l14-14" />
-      <circle cx="40" cy="64" r="11"/><circle cx="62" cy="62" r="11"/><circle cx="84" cy="63" r="11"/><circle cx="105" cy="68" r="10"/>
-      <circle cx="50" cy="84" r="11"/><circle cx="72" cy="83" r="11"/><circle cx="94" cy="86" r="11"/>
-      <circle cx="40" cy="104" r="10"/><circle cx="61" cy="104" r="11"/><circle cx="83" cy="106" r="11"/>
-      <circle cx="51" cy="124" r="10"/><circle cx="72" cy="126" r="11"/><circle cx="92" cy="125" r="9"/>
-      <circle cx="62" cy="145" r="10"/><circle cx="82" cy="145" r="9"/>
-      <circle cx="72" cy="164" r="9"/>
-    </symbol>
-    <symbol id="copa" viewBox="0 0 60 120" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M13 6h34c3 26 0 46-17 52C13 52 10 32 13 6z" />
-      <path d="M14 28c10 3 22 3 32 0" />
-      <path d="M30 58v44M16 110c6-5 22-5 28 0M20 9c-1 10 0 20 3 27" />
-    </symbol>
-    <symbol id="botella" viewBox="0 0 40 120" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M16 4h8v26c0 9 10 12 10 24v58c0 3-2 4-4 4H10c-2 0-4-1-4-4V54c0-12 10-15 10-24z" />
-      <path d="M16 12h8M9 66h22v28H9z" />
-      <path d="M14 76h12M16 84h8" />
-    </symbol>
-  </svg>
-
-  <!-- Verificación de edad -->
+  <!-- ============ Verificación de edad ============ -->
   <div id="age-gate" class="age-gate" hidden>
-    <div class="age-card arch">
-      <div class="age-art js-only-logo" hidden><img class="js-logo-crop" alt="" /></div>
-      <svg class="age-lamp js-no-logo"><use href="#lampara" /></svg>
-      <h2 class="js-store-name">Vinos El Aladino</h2>
+    <div class="age-card">
+      <img src="img/lampara.webp" alt="" class="age-lamp" />
+      <img src="img/aladino.webp" alt="Aladino" class="age-word" />
+      <div class="divisor"><span></span><i>✦</i><span></span></div>
       <p>Para visitar esta web debes tener la edad legal para consumir alcohol.</p>
       <p class="age-question">¿Eres mayor de 18 años?</p>
       <div class="age-actions">
-        <button class="btn btn-gold" id="age-yes">Sí, soy mayor</button>
-        <button class="btn btn-ghost" id="age-no">No</button>
+        <button class="btn btn-oro" id="age-yes">Sí, soy mayor</button>
+        <button class="btn btn-linea" id="age-no">No</button>
       </div>
       <p class="age-denied" id="age-denied" hidden>Lo sentimos, vuelve cuando tengas la edad legal.</p>
     </div>
   </div>
 
-  <!-- Cabecera -->
+  <!-- ============ Cabecera ============ -->
   <header class="topbar" id="topbar">
-    <a href="#inicio" class="brand">
-      <svg class="brand-icon"><use href="#lampara" /></svg>
-      <span class="js-store-name">Vinos El Aladino</span>
-    </a>
+    <a href="#inicio" class="marca"><img src="img/aladino.webp" alt="Aladino" /></a>
     <nav class="nav" id="nav"></nav>
-    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú"><span></span><span></span></button>
+    <div class="top-acciones">
+      <button class="btn-pdf-top js-pdf" aria-label="Descargar catálogo en PDF" title="Descargar PDF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg><span>PDF</span></button>
+      <button class="btn-pedido-top" id="abrir-pedido-top" aria-label="Ver pedido">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+        <span class="badge" id="badge" hidden>0</span>
+      </button>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Menú"><span></span><span></span></button>
+    </div>
   </header>
 
-  <!-- Portada -->
-  <section class="hero no-logo" id="inicio">
-    <svg class="hero-deco deco-uvas" aria-hidden="true"><use href="#uvas" /></svg>
-    <svg class="hero-deco deco-uvas-2" aria-hidden="true"><use href="#uvas" /></svg>
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="hero-kicker reveal js-lema">Pasión · Misterio · Tradición</p>
-        <h1 class="hero-title reveal" id="hero-title">Vinos El Aladino</h1>
-        <div class="hero-rule reveal">✦</div>
-        <p class="hero-tagline reveal js-eslogan">Un deseo en cada copa.</p>
-        <p class="hero-text reveal js-intro"></p>
-        <div class="hero-actions reveal">
-          <a href="#carta" class="btn btn-gold">Ver la carta</a>
-          <a href="#contacto" class="link-arrow">Contacto <i></i></a>
-        </div>
-      </div>
+  <!-- ============ Portada (como la carta) ============ -->
+  <section class="portada" id="inicio">
+    <div class="marco">
+      <svg class="marco-cupula" viewBox="0 0 240 44" aria-hidden="true">
+        <path class="tapa" d="M0 44 C70 44 92 34 106 16 Q116 4 120 0 Q124 4 134 16 C148 34 170 44 240 44 Z" />
+        <path class="linea" d="M0 43.5 C70 43.5 92 34 106 16 Q116 4 120 0.5 Q124 4 134 16 C148 34 170 43.5 240 43.5" />
+      </svg>
+      <div class="marco-interior"></div>
+      <span class="marco-estrella">✦</span>
 
-      <div class="hero-media reveal">
-        <div class="frame-offset"></div>
-        <div class="frame">
-          <img class="js-logo-crop" alt="" />
-          <div class="frame-caption"><span>Selección privada</span><em class="js-store-name">Vinos El Aladino</em></div>
+      <div class="portada-contenido">
+        <div class="portada-arte reveal">
+          <img src="img/ilustracion.webp" alt="Aladino con su lámpara" class="ilustracion" />
+          <img src="img/aladino.webp" alt="Aladino" class="palabra" />
         </div>
-        <div class="frame-second" id="frame-second" hidden>
-          <img class="js-portada" alt="" />
+        <p class="temporada reveal js-temporada">Catálogo 2026 - 2027</p>
+        <div class="divisor reveal"><span></span><i>✦</i><span></span></div>
+        <p class="subtitulo reveal js-subtitulo">Precios por unidad</p>
+        <p class="eslogan reveal js-eslogan">Un deseo en cada copa</p>
+        <p class="pais reveal js-pais">Perú</p>
+        <div class="portada-acciones reveal">
+          <a href="#carta" class="btn btn-oro">Ver la carta</a>
+          <button class="btn btn-linea" id="como-pedir-btn">Cómo pedir</button>
         </div>
-        <div class="seal" aria-hidden="true">
-          <svg class="ring" viewBox="0 0 100 100">
-            <defs><path id="circulo" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1-76 0" /></defs>
-            <text><textPath href="#circulo" class="js-seal-text" textLength="236" lengthAdjust="spacing">Un deseo en cada copa ✦ Un deseo en cada copa ✦</textPath></text>
-          </svg>
-          <svg class="seal-lamp" viewBox="0 0 64 40"><use href="#lampara" /></svg>
-        </div>
+        <button class="link-pdf reveal js-pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg><span>Descargar catálogo en PDF</span></button>
       </div>
     </div>
-
-    <a href="#carta" class="hero-foot"><span class="scroll-hint"><span></span></span>Descubrir</a>
   </section>
 
-  <!-- Cinta -->
-  <div class="ribbon" aria-hidden="true"><div class="ribbon-track" id="ribbon"></div></div>
+  <!-- ============ Cómo pedir ============ -->
+  <section class="pasos" id="como-pedir">
+    <div class="paso reveal"><span class="paso-num">I</span><h3>Elige</h3><p>Toca <b>+</b> en los productos que quieras.</p></div>
+    <span class="paso-sep">✦</span>
+    <div class="paso reveal"><span class="paso-num">II</span><h3>Revisa</h3><p>Ajusta cantidades en tu pedido.</p></div>
+    <span class="paso-sep">✦</span>
+    <div class="paso reveal"><span class="paso-num">III</span><h3>Envía</h3><p>Te lo mandamos por WhatsApp con el total.</p></div>
+  </section>
 
-  <!-- Valores -->
-  <section class="valores" id="valores"></section>
-
-  <!-- Carta de vinos -->
+  <!-- ============ Carta ============ -->
   <main id="carta" class="carta">
-    <div class="carta-intro reveal">
-      <svg class="intro-lamp"><use href="#lampara" /></svg>
-      <p class="eyebrow">Nuestra colección</p>
-      <h2 class="section-title">La Carta</h2>
-      <div class="ornament"><span></span><i>✦</i><span></span></div>
-      <p class="muted italic">Cada botella guarda un deseo. Elige el tuyo.</p>
-    </div>
-
-    <div class="toolbar" id="toolbar">
-      <div class="chips" id="chips"></div>
-      <label class="search">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-        <input type="search" id="search" placeholder="Buscar un vino…" autocomplete="off" />
-      </label>
-    </div>
-
-    <div id="catalogo" class="catalogo">
-      <div class="loading"><span></span><span></span><span></span></div>
+    <div id="secciones">
+      <div class="cargando"><span></span><span></span><span></span></div>
     </div>
   </main>
 
-  <!-- Pie -->
-  <footer class="footer" id="contacto">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <svg class="footer-lamp"><use href="#lampara" /></svg>
-        <h3 class="js-store-name">Vinos El Aladino</h3>
-        <p class="muted italic js-eslogan"></p>
-      </div>
-      <div class="footer-contact" id="footer-contact"></div>
+  <!-- ============ Pie ============ -->
+  <footer class="pie" id="contacto">
+    <img src="img/lampara.webp" alt="" class="pie-lampara" />
+    <img src="img/aladino.webp" alt="Aladino" class="pie-palabra" />
+    <div class="divisor"><span></span><i>✦</i><span></span></div>
+    <p class="eslogan js-eslogan">Un deseo en cada copa</p>
+    <p class="pais js-pais">Perú</p>
+    <a class="pie-whatsapp" id="pie-whatsapp" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8 8 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.5 13.5 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2z"/></svg>
+      <span id="pie-numero"></span>
+    </a>
+    <div><button class="btn btn-linea pie-pdf js-pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>Descargar PDF</button></div>
+    <div class="pie-legal">
+      <span>Precios por unidad en soles (<span class="js-moneda">S/</span>)</span>
+      <span class="js-aviso">Tomar bebidas alcohólicas en exceso es dañino.</span>
+      <span>© <span id="anio"></span> Aladino</span>
     </div>
-    <p class="footer-legal">Consumo responsable · Venta exclusiva a mayores de 18 años · © <span class="js-year-now"></span> <span class="js-store-name">Vinos El Aladino</span></p>
   </footer>
 
-  <!-- Ventana de detalle -->
-  <div class="lightbox" id="lightbox" hidden>
-    <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar">×</button>
-    <div class="lightbox-body">
-      <div class="lightbox-img"><img id="lb-img" alt="" /></div>
-      <div class="lightbox-info">
-        <p class="eyebrow" id="lb-cat"></p>
-        <h3 id="lb-name"></h3>
-        <div class="ornament left"><span></span><i>✦</i><span></span></div>
-        <p class="muted">¿Te interesa este vino? Escríbenos y te contamos precio, disponibilidad y envío.</p>
-        <div id="lb-actions" class="lb-actions"></div>
+  <!-- ============ Barra de pedido ============ -->
+  <button class="barra-pedido" id="barra-pedido" hidden>
+    <span class="bp-cant" id="bp-cant">0</span>
+    <span class="bp-texto"><span id="bp-items">0 productos</span><b id="bp-total">S/ 0</b></span>
+    <span class="bp-ver">Ver pedido <i></i></span>
+  </button>
+
+  <!-- ============ Panel del pedido ============ -->
+  <div class="velo" id="velo" hidden></div>
+  <aside class="panel" id="panel" aria-label="Tu pedido" hidden>
+    <header class="panel-cab">
+      <div>
+        <p class="panel-kicker">Tu pedido</p>
+        <h2>Aladino</h2>
+      </div>
+      <button class="panel-cerrar" id="panel-cerrar" aria-label="Cerrar">×</button>
+    </header>
+    <div class="panel-cuerpo">
+      <ul class="panel-lista" id="panel-lista"></ul>
+      <div class="panel-vacio" id="panel-vacio">
+        <img src="img/lampara.webp" alt="" />
+        <p>Tu pedido está vacío.<br />Toca <b>+</b> en los productos de la carta.</p>
+      </div>
+      <div class="panel-datos" id="panel-datos">
+        <label><span>Nombre <small>(opcional)</small></span><input type="text" id="cliente-nombre" autocomplete="name" placeholder="¿A nombre de quién?" /></label>
+        <label><span>Dirección o notas <small>(opcional)</small></span><textarea id="cliente-notas" rows="2" placeholder="Distrito, referencia, hora de entrega…"></textarea></label>
       </div>
     </div>
-  </div>
+    <footer class="panel-pie" id="panel-pie">
+      <div class="panel-total"><span>Total</span><b id="panel-total">S/ 0</b></div>
+      <button class="btn btn-oro btn-whatsapp" id="enviar-pedido">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8 8 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.5 13.5 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2z"/></svg>
+        Enviar pedido por WhatsApp
+      </button>
+      <button class="panel-vaciar" id="vaciar-pedido">Vaciar pedido</button>
+    </footer>
+  </aside>
+
+  <div class="aviso-flotante" id="toast" hidden></div>
 
   <script src="config.js"></script>
-  <script src="script.js"></script>
+  <script src="lector-excel.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

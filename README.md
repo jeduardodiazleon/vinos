@@ -1,54 +1,61 @@
-# 🍷 Vinos El Aladino — web para GitHub Pages
+# Aladino · Catálogo web con pedidos por WhatsApp
 
-Catálogo elegante que se genera **solo** a partir de las fotos que subas.
+Web con el mismo diseño de la carta impresa. Los productos y precios se leen del Excel **`productos.xlsx`**, y los clientes arman su pedido con **+ / −** y lo envían por WhatsApp.
 
-## Cómo nombrar las fotos
+## Archivos
 
-Súbelas a la carpeta `imagenes/` con el formato:
+| Archivo | Para qué sirve |
+|---|---|
+| `productos.xlsx` | **Productos y precios** (lo único que editarás a menudo) |
+| `config.js` | Número de WhatsApp, textos de la portada, aviso legal |
+| `index.html`, `styles.css`, `app.js`, `lector-excel.js` | La web (no hace falta tocarlos) |
+| `img/` | Ilustración, logotipo y lámpara de la carta |
+| `pdf-catalogo.js`, `vendor/` | Generador del PDF descargable (jsPDF 4.2.1, licencia MIT) |
+
+## Cambiar productos o precios
+
+1. Abre `productos.xlsx` (Excel, Google Sheets o LibreOffice).
+2. En la hoja **Productos**, cada fila es un producto:
+   - **Sección**: Vinos, Piscos, Cremas y complementos… (una nueva crea otro apartado).
+   - **Categoría** + **Presentación**: título y subtítulo de la tarjeta. Las filas con la misma Sección + Categoría + Presentación van en la misma tarjeta.
+   - **Producto** y **Precio** (solo el número, ej. `12` o `12.50`).
+   - **Disponible**: pon `No` para ocultarlo sin borrarlo.
+3. Guarda como **.xlsx** con el mismo nombre y súbelo a GitHub reemplazando el anterior. En 1–2 minutos la web se actualiza.
+
+No cambies los títulos de la fila 1 ni el nombre de la hoja «Productos». El orden de las filas es el orden en la web.
+
+## Cómo funciona el pedido
+
+- El cliente toca **+** (y **−** para quitar). La cantidad aparece en el producto y abajo sale una barra con el total.
+- En **Ver pedido** revisa productos, cantidades, precio por unidad y total, y puede añadir su nombre y dirección (opcional).
+- **Enviar pedido por WhatsApp** abre WhatsApp al número de `config.js` con un mensaje así:
 
 ```
-Categoria_Nombre.jpg
+*NUEVO PEDIDO · ALADINO*
+
+1. *Borgoña Blanca*
+    Comerciales · Botella · 750 ml
+    2 x S/ 12 = S/ 24
+
+------------------------------
+*TOTAL: S/ 24*
+(2 unidades)
 ```
 
-| Archivo                          | Categoría (subtítulo) | Producto              |
-|----------------------------------|-----------------------|-----------------------|
-| `Tinto_Rioja Reserva 2019.jpg`   | Tinto                 | Rioja Reserva 2019    |
-| `Tinto_Ribera_del_Duero.png`     | Tinto                 | Ribera del Duero      |
-| `Blanco_Albariño.webp`           | Blanco                | Albariño              |
+El pedido se guarda en el navegador del cliente, así que no se pierde si recarga la página.
 
-- Lo que va **antes del primer `_`** es la categoría; el resto es el nombre (los `_` siguientes se convierten en espacios).
-- Las categorías se agrupan aunque varíen mayúsculas (`tinto` = `Tinto`).
-- Formatos válidos: jpg, jpeg, png, webp, gif, avif, svg.
-- Consejo: fotos de la botella con **fondo blanco** quedan perfectas (el fondo se funde con la tarjeta).
+## Catálogo en PDF
 
-## Logo
+Los botones **PDF** (arriba), **Descargar catálogo en PDF** (portada) y **Descargar PDF** (pie) crean al momento un PDF con el mismo diseño de la carta y **los precios actuales del Excel**. No hay que subir ningún PDF a mano.
 
-Sube tu logo a `imagenes/` con el nombre **`Logo`** (`Logo.jpg`, `Logo.png`, `Logo.webp`…). En la portada y en el aviso de edad se muestra solo una parte (la ilustración), dentro de un marco, para que no salgan textos de la etiqueta como "Vino Tinto". Puedes ajustar qué parte se ve con `encuadreLogo` en `config.js`. No se muestra como producto. Para cambiarlo, sustituye el archivo.
+El PDF incluye enlaces a la web: el botón **Ver la versión más reciente** en la portada, la dirección al pie de cada página y otro enlace en la contraportada. Así, quien tenga un PDF antiguo puede abrir siempre la carta actualizada. También tiene la fecha de los precios y un enlace a WhatsApp.
 
-## Foto pequeña de la portada
-
-Sube a `imagenes/` una foto llamada **`Portada`** (`Portada.jpg`…). Aparece superpuesta junto a la imagen principal; tampoco sale en la carta. Si no existe, simplemente no se muestra.
-
-## Cinta y valores
-
-En `config.js` puedes cambiar la cinta que se desliza bajo la portada (`cinta`) y los tres valores con iconos (`valores`).
+Por defecto el enlace apunta a la dirección desde la que se descarga. Si usas un dominio propio, escríbelo en `urlWeb` dentro de `config.js`.
 
 ## Publicar en GitHub Pages
 
-1. Crea un repositorio **público** en GitHub (ej. `vinos`).
-2. Sube todos estos archivos (puedes arrastrarlos en *Add file → Upload files*).
-3. Ve a **Settings → Pages**, en *Source* elige **Deploy from a branch**, rama `main`, carpeta `/ (root)` y guarda.
-4. En 1–2 minutos tu web estará en `https://TU-USUARIO.github.io/vinos/`.
+1. Sube todos estos archivos a la raíz del repositorio (si ya tenías la versión anterior, borra `script.js` y la carpeta `imagenes/`, que ya no se usan).
+2. **Settings → Pages → Deploy from a branch → main / (root)**.
+3. La web estará en `https://TU-USUARIO.github.io/NOMBRE-REPO/`.
 
-Para añadir vinos después: entra en la carpeta `imagenes/` del repositorio → *Add file → Upload files*. Aparecerán en la web en pocos minutos.
-
-## Personalizar
-
-Edita **`config.js`**: nombre de la tienda, eslogan, WhatsApp, email, Instagram, orden de categorías y aviso de mayoría de edad. Con WhatsApp configurado, cada vino tiene un botón que abre un mensaje ya escrito con el nombre del vino.
-
-## Notas
-
-- La web detecta las fotos usando la API pública de GitHub (límite: 60 consultas por hora por visitante, más que suficiente; además se guarda en caché).
-- Si usas **dominio propio**, rellena `githubUsuario` y `githubRepo` en `config.js`.
-- Alternativa sin API: crea `imagenes/lista.json` con la lista de archivos, ej. `["Tinto_Rioja.jpg", "Blanco_Verdejo.jpg"]`. También sirve para probar la web en tu ordenador.
-- GitHub Pages no permite tiendas con pago online; esta web es un **catálogo** con pedidos por WhatsApp/email.
+> Para probarla en tu ordenador hay que abrirla con un servidor local (por ejemplo `python -m http.server`); abriendo `index.html` con doble clic el navegador no deja leer el Excel.
